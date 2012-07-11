@@ -5,6 +5,13 @@ TODO
     - I could jump directly to a node's left's left or right's right and skip some tests
         - For example, I'm checking the left and right payloads twice per search
     - I bet I could have this run on two threads, with one thread each for left and right searches.
+    	- I want to add a pointer to the current middle value, so I can start from there
+    	- Would limit any further optimization that made it unpredictable when any given
+    	  node would be modified
+    - I need to really do something like a git bisect, and divide the set in half each time I test
+- I need to spend more time thinking about memory. After I've hit N nodes, I need to stop
+  adding more and instead start pruning the top down. Right now I'm putting all input values into memory,
+  which wouldn't be feasible with a large dataset
 - Port to Obj-C
     - Instruments, how I miss thee....
 - It would be nice to test with a real large data set
