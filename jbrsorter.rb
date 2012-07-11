@@ -57,24 +57,24 @@ end
 
 def placeNodeNearClosestNode( base, value )
   if( base.payload <= value )
-    if( base.left )
+    if( base.leftNode )
       # Check if we're still less than the one to the left
-      findNearestNode( base.left, value )
+      placeNodeNearClosestNode( base.leftNode, value )
     else
       # Add as left node with current as right
       node = TreeNode.new(value, nil, base) 
       nodeArray.push(node)
-      base.left = node
+      base.leftNode = node
     end
   elsif( base.payload > value )
-    if( base.right)
+    if( base.rightNode)
       # Check if we're still more than the one to the right
-      findNearestNode( base.right, value)
+      placeNodeNearClosestNode( base.rightNode, value)
     else
       # Add as right node with current as left
       node = TreeNode.new(value, base, nil)
       nodeArray.push(node)
-      base.right = node
+      base.rightNode = node
     end
   end
 end
