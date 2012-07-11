@@ -3,6 +3,7 @@
 # Read in a large file
 
 # (To test, I need to generate 1 trillion random int32_ts and write those to a test file).
+# This is outputting floats, instead, but the principle's the same so I'll come back to this later
 def generateTestFile( filename )
   File.new(filename, "w")
   file = File.open(filename, "w")
