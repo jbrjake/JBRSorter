@@ -119,10 +119,6 @@ end
 
 # Write the lowest N numbers to a file
 
-# generateTestFile( "testfile.txt" )
-
-# puts loadNumberFromFile( "testfile.txt", 5 )
-
 def sortFile( filename, numberOfValuesToOutput )
   treeController = TreeController.new
   # Load each line into memory and add it to the right place in tree 
