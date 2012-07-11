@@ -71,7 +71,18 @@ def placeNodeNearClosestNode( base, value )
   if( value <= base.payload )
     if( base.leftNode )
       # Check if we're still less than the one to the left
-      placeNodeNearClosestNode( base.leftNode, value )
+      if( value > base.leftNode.payload)
+        #insert
+        # Add as left node with current as right
+        # Set the old leftNode's right as the current
+        # Set the current's left node as the old leftNode
+        node = TreeNode.new(value, base.leftNode, base) 
+        nodeArray.push(node)
+        base.leftNode.rightNode = node
+        base.leftNode = node
+      else
+        placeNodeNearClosestNode( base.leftNode, value )
+      end
     else
       # Add as left node with current as right
       node = TreeNode.new(value, nil, base) 
@@ -82,7 +93,18 @@ def placeNodeNearClosestNode( base, value )
   elsif( value > base.payload )
     if( base.rightNode)
       # Check if we're still more than the one to the right
-      placeNodeNearClosestNode( base.rightNode, value)
+      if( value <= base.rightNode.payload)
+        #insert
+        # Add as right node with current as left
+        # Set the old rightNode's left as the current
+        # Set the current's left node as the old leftNode
+        node = TreeNode.new(value, base, base.rightNode)
+        nodeArray.push(node)
+        base.rightNode.leftNode = node
+        base.rightNode = node
+      else
+        placeNodeNearClosestNode( base.rightNode, value )
+      end
     else
       # Add as right node with current as left
       node = TreeNode.new(value, base, nil)
