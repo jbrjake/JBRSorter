@@ -30,7 +30,7 @@ end
 class TreeNode
   attr_accessor :payload, :leftNode, :rightNode
 
-  def init( value, left, right )
+  def initialize( value, left, right )
     self.payload = value
     self.leftNode = leftNode
     self.rightNode = rightNode
@@ -41,8 +41,8 @@ end
 class TreeController
   attr_accessor :nodeArray
   
-  def init
-    nodeArray = []
+  def initialize
+    self.nodeArray = Array.new
   end
   
 def addValueToTree( value )
