@@ -27,7 +27,7 @@ end
 
 # Sort the numbers
 
-class treeNode
+class TreeNode
   attr_accessor :payload, :leftNode, :rightNode
 
   def init( value, left, right )
@@ -38,7 +38,7 @@ class treeNode
   
 end
 
-class treeController
+class TreeController
   attr_accessor :nodeArray
   
   def init
