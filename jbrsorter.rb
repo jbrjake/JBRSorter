@@ -48,9 +48,34 @@ class TreeController
 def addValueToTree( value )
   if nodeArray.size > 0
     # Find the right location for this value
+    placeNodeNearClosestNode( nodeArray.first, value )
   else
     # First value
-    nodeArray.push( treeNode.new(value, nil, nil) )
+    nodeArray.push( TreeNode.new(value, nil, nil) )
+  end
+end
+
+def placeNodeNearClosestNode( base, value )
+  if( base.payload <= value )
+    if( base.left )
+      # Check if we're still less than the one to the left
+      findNearestNode( base.left, value )
+    else
+      # Add as left node with current as right
+      node = TreeNode.new(value, nil, base) 
+      nodeArray.push(node)
+      base.left = node
+    end
+  elsif( base.payload > value )
+    if( base.right)
+      # Check if we're still more than the one to the right
+      findNearestNode( base.right, value)
+    else
+      # Add as right node with current as left
+      node = TreeNode.new(value, base, nil)
+      nodeArray.push(node)
+      base.right = node
+    end
   end
 end
 
