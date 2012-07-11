@@ -15,7 +15,7 @@ end
 # Sort the numbers
 
 
-class TreeNode
+class Node
   attr_accessor :payload, :leftNode, :rightNode
 
   def initialize( value, left, right )
@@ -37,17 +37,17 @@ class TreeNode
   end
 end
 
-# Handles management of a tree
-# The tree's nodes are stored in nodeArray
+# Handles management of the nodes
+# The nodes are stored in nodeArray
 # lowestValue stores the node with the lowest payload value found in the search
-class TreeController
+class NodeController
   attr_accessor :nodeArray, :lowestValue
   
   def initialize
     self.nodeArray = Array.new
   end
   
-def addValueToTree( value )
+def addValueToNodes( value )
   if nodeArray.count > 0
     # Find the right location for this value
     # I'm arbitrarily starting from the first input number
@@ -64,7 +64,7 @@ def addValueToTree( value )
     end
   else
     # First value
-    nodeArray.push( TreeNode.new(value, nil, nil) )
+    nodeArray.push( Node.new(value, nil, nil) )
     self.lowestValue = nodeArray.first # Well, it's the lowest for now...
   end
 end
@@ -82,7 +82,7 @@ def placeNodeNearClosestNode( base, value )
         # Add a new node with leftNode as its left and base as its right
         # Set the old leftNode's rightNode to be the new node
         # Set the base's left node to be the new node
-        node = TreeNode.new(value, base.leftNode, base) 
+        node = Node.new(value, base.leftNode, base) 
         nodeArray.push(node)
         base.leftNode.rightNode = node
         base.leftNode = node
@@ -92,7 +92,7 @@ def placeNodeNearClosestNode( base, value )
     else
       # The base is the current minimum
       # Add a new far left node with the base to its right
-      node = TreeNode.new(value, nil, base) 
+      node = Node.new(value, nil, base) 
       nodeArray.push(node)
       base.leftNode = node
       self.lowestValue = node # Update the lowest value counter with this new low
@@ -105,7 +105,7 @@ def placeNodeNearClosestNode( base, value )
         # Add a new node with current as its left and rightNode as its right
         # Set the old rightNode's leftNode to be the new node
         # Set the base's right node to be the new node
-        node = TreeNode.new(value, base, base.rightNode)
+        node = Node.new(value, base, base.rightNode)
         nodeArray.push(node)
         base.rightNode.leftNode = node
         base.rightNode = node
@@ -115,7 +115,7 @@ def placeNodeNearClosestNode( base, value )
     else
       # The base is the current maximum
       # Add a new far right node with the base to its left
-      node = TreeNode.new(value, base, nil)
+      node = Node.new(value, base, nil)
       nodeArray.push(node)
       base.rightNode = node
     end
@@ -127,16 +127,16 @@ end
 
 # Write the lowest N numbers to a file
 def sortFile( filename, numberOfValuesToOutput )
-  treeController = TreeController.new
-  # Load each line into memory and add it to the right place in tree 
+  nodeController = NodeController.new
+  # Load each line into memory and add it to the right place in the nodes 
   file = File.open( filename, "r" )
   file.each_line do | line |
-    treeController.addValueToTree( line.to_s.chomp.to_f)
+    nodeController.addValueToNodes( line.to_s.chomp.to_f)
   end
   
-  # Write the output tree to disk bottom-up, but only up to a specified number of values
+  # Write the output nodes to disk bottom-up, but only up to a specified number of values
   outFile = File.new( "output-#{filename}", "w" )
-  node = treeController.lowestValue
+  node = nodeController.lowestValue
   numberOfValuesToOutput.times do
     # Travel the right nodes upwards from the node with the lowest value found
     outFile.puts node.payload.to_s
