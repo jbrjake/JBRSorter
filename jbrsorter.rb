@@ -46,7 +46,7 @@ class TreeController
   end
   
 def addValueToTree( value )
-  if nodeArray.size > 0
+  if nodeArray.count > 0
     # Find the right location for this value
     placeNodeNearClosestNode( nodeArray.first, value )
   else
