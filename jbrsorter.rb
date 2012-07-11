@@ -59,7 +59,17 @@ class TreeController
 def addValueToTree( value )
   if nodeArray.count > 0
     # Find the right location for this value
-    placeNodeNearClosestNode( nodeArray.first, value )
+    node = nodeArray.first
+    while 1 do
+      result = placeNodeNearClosestNode( node, value )
+      if( result == 0 )
+        break
+      elsif( result == -1 )
+        node = node.leftNode
+      elsif( result == 1 )
+        node = node.rightNode
+      end
+    end
   else
     # First value
     nodeArray.push( TreeNode.new(value, nil, nil) )
@@ -67,7 +77,11 @@ def addValueToTree( value )
   end
 end
 
+# Returns -1 if the base's lowestNode needs to be searched
+# Returns 0 if the search is complete
+# Returns 1 if the base's rightNode needs to be searched
 def placeNodeNearClosestNode( base, value )
+  result = 0
   if( value <= base.payload )
     if( base.leftNode )
       # Check if we're still less than the one to the left
@@ -81,7 +95,7 @@ def placeNodeNearClosestNode( base, value )
         base.leftNode.rightNode = node
         base.leftNode = node
       else
-        placeNodeNearClosestNode( base.leftNode, value )
+         result = -1
       end
     else
       # Add as left node with current as right
@@ -103,7 +117,7 @@ def placeNodeNearClosestNode( base, value )
         base.rightNode.leftNode = node
         base.rightNode = node
       else
-        placeNodeNearClosestNode( base.rightNode, value )
+        result = 1
       end
     else
       # Add as right node with current as left
@@ -112,6 +126,7 @@ def placeNodeNearClosestNode( base, value )
       base.rightNode = node
     end
   end
+  return result
 end
 
 end
