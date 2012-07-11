@@ -1,20 +1,5 @@
 #! /usr/bin/ruby
 
-# To really test, I'd need to generate 1 trillion random int32_ts and write those to a test file.
-# This is outputting a small set of floats, instead, but the principle's the same
-# I'll come back to this this later
-def generateTestFile( filename )
-  File.new(filename, "w")
-  file = File.open(filename, "w")
-  100.times do # For expediency's sake I'll use a set of 100
-    file.puts rand().to_s
-  end
-  file.close
-end
-
-# Sort the numbers
-
-
 class Node
   attr_accessor :payload, :leftNode, :rightNode
 
@@ -125,6 +110,18 @@ end
 
 end
 
+# To really test, I'd need to generate 1 trillion random int32_ts and write those to a test file.
+# This is outputting a small set of floats, instead, but the principle's the same
+# I'll come back to this this later
+def generateTestFile( filename )
+  File.new(filename, "w")
+  file = File.open(filename, "w")
+  100.times do # For expediency's sake I'll use a set of 100
+    file.puts rand().to_s
+  end
+  file.close
+end
+
 # Write the lowest N numbers to a file
 def sortFile( filename, numberOfValuesToOutput )
   nodeController = NodeController.new
@@ -145,4 +142,5 @@ def sortFile( filename, numberOfValuesToOutput )
   
 end
 
+# Execution
 sortFile( "testfile.txt", 50 )
