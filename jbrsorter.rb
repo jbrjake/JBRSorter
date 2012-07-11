@@ -11,20 +11,6 @@ def generateTestFile( filename )
   file.close
 end
 
-# Read in a large file
-# Okay this pass at it would not work for large files (seek time would be ridiculous), but it lets me get to the fun part, sorting.
-# Eventually I see it working by chunking up the file load by a certain number of lines, and pre-loading them into an array
-# Then it would only have to read the file every "certain number of lines".
-def loadNumberFromFile( filename, n )
-  file = File.open(filename, "r")
-  while file.lineno < n - 1
-    file.gets
-  end 
-  theNum = file.gets
-  file.close
-  return theNum
-end
-
 # Sort the numbers
 
 class TreeNode
