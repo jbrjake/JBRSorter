@@ -106,7 +106,7 @@ def sortFile( filename )
   file = File.open( filename, "r" )
   file.each_line do | line |
     # For now I'll just treat my small test file as a small file and read it all into memory
-    treeController.addValueToTree( line.to_s.chomp)
+    treeController.addValueToTree( line.to_s.chomp.to_f)
   end
 end
    
