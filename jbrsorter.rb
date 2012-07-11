@@ -38,6 +38,24 @@ class treeNode
   
 end
 
+class treeController
+  attr_accessor :nodeArray
+  
+  def init
+    nodeArray = []
+  end
+  
+def addValueToTree( value )
+  if nodeArray.size > 0
+    # Find the right location for this value
+  else
+    # First value
+    nodeArray.push( treeNode.new(value, nil, nil) )
+  end
+end
+
+end
+
 # Write the lowest N numbers to a file
 
 # generateTestFile( "testfile.txt" )
