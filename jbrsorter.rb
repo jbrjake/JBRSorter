@@ -125,6 +125,10 @@ def sortFile( filename, numberOfValuesToOutput )
   file = File.open( filename, "r" )
   file.each_line do | line |
     # For now I'll just treat my small test file as a small file and read it all into memory
+    # (Actually, I'm not sure if that's the case. If Ruby just uses a file pointer then 
+    #  maybe it's just reading in line by line, in which case this is already efficient. )
+    # Ultimately, I would move to a different approach:
+    # Read in large but manageable chunks of the input at a time.
     treeController.addValueToTree( line.to_s.chomp.to_f)
   end
   
