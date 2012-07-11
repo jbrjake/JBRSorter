@@ -32,8 +32,8 @@ class TreeNode
 
   def initialize( value, left, right )
     self.payload = value
-    self.leftNode = leftNode
-    self.rightNode = rightNode
+    self.leftNode = left
+    self.rightNode = right
   end
   
   def to_s
