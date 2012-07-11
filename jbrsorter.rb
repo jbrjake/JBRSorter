@@ -63,7 +63,7 @@ def addValueToTree( value )
   else
     # First value
     nodeArray.push( TreeNode.new(value, nil, nil) )
-    lowestValue = nodeArray.first
+    self.lowestValue = nodeArray.first
   end
 end
 
@@ -88,7 +88,7 @@ def placeNodeNearClosestNode( base, value )
       node = TreeNode.new(value, nil, base) 
       nodeArray.push(node)
       base.leftNode = node
-      lowestValue = node
+      self.lowestValue = node
     end
   elsif( value > base.payload )
     if( base.rightNode)
