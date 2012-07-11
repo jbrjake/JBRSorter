@@ -67,7 +67,7 @@ def addValueToTree( value )
 end
 
 def placeNodeNearClosestNode( base, value )
-  if( base.payload <= value )
+  if( value <= base.payload )
     if( base.leftNode )
       # Check if we're still less than the one to the left
       placeNodeNearClosestNode( base.leftNode, value )
@@ -77,7 +77,7 @@ def placeNodeNearClosestNode( base, value )
       nodeArray.push(node)
       base.leftNode = node
     end
-  elsif( base.payload > value )
+  elsif( value > base.payload )
     if( base.rightNode)
       # Check if we're still more than the one to the right
       placeNodeNearClosestNode( base.rightNode, value)
