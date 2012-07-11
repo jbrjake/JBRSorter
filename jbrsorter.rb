@@ -45,7 +45,7 @@ class TreeNode
     if rightNode
       right = rightNode.payload.to_s
     end
-    return "Left: " + left + " Value: " + self.payload + " Right: " + right
+    return "Left: " + left + " Value: " + self.payload.to_s + " Right: " + right
   end
 end
 
