@@ -27,6 +27,17 @@ end
 
 # Sort the numbers
 
+class treeNode
+  attr_accessor :payload, :leftNode, :rightNode
+
+  def init( value, left, right )
+    self.payload = value
+    self.leftNode = leftNode
+    self.rightNode = rightNode
+  end
+  
+end
+
 # Write the lowest N numbers to a file
 
 # generateTestFile( "testfile.txt" )
