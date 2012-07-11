@@ -1,0 +1,11 @@
+TODO
+
+- Try out some things to speed up search of the nodes.
+    - What if I added some concept of ancestry to the nodes?
+    - I could jump directly to a node's left's left or right's right and skip some tests
+        - For example, I'm checking the left and right payloads twice per search
+    - I bet I could have this run on two threads, with one thread each for left and right searches.
+- Port to Obj-C
+    - Instruments, how I miss thee....
+- It would be nice to test with a real large data set
+- Fix the problem with the rands being floats
