@@ -137,7 +137,7 @@ end
 
 # puts loadNumberFromFile( "testfile.txt", 5 )
 
-def sortFile( filename )
+def sortFile( filename, numberOfValuesToOutput )
   treeController = TreeController.new
   # Load each line into memory and add it to the right place in tree 
   file = File.open( filename, "r" )
@@ -145,6 +145,14 @@ def sortFile( filename )
     # For now I'll just treat my small test file as a small file and read it all into memory
     treeController.addValueToTree( line.to_s.chomp.to_f)
   end
+  
+  outFile = File.new( "output-#{filename}", "w" )
+  node = treeController.lowestValue
+  numberOfValuesToOutput.times do
+    outFile.puts node.payload.to_s
+    node = node.rightNode
+  end
+  
 end
-   
-sortFile( "testfile.txt" )
+
+sortFile( "testfile.txt", 50 )
