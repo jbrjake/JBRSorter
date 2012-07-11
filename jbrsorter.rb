@@ -5,7 +5,7 @@
 # (To test, I need to generate 1 trillion random int32_ts and write those to a test file).
 def generateTestFile( filename )
   File.new(filename, "w")
-  .times do # Huh I guess I need to look up how to do scientific notation in Ruby...
+  100.times do # Okay for expediency's sake I'll use a set of 100
     
   end
 end
