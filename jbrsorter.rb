@@ -88,7 +88,13 @@ end
 # puts loadNumberFromFile( "testfile.txt", 5 )
 
 def sortFile( filename )
+  treeController = TreeController.new
   # Load each line into memory and add it to the right place in tree 
+  file = File.open( filename, "r" )
+  file.each_line do | line |
+    # For now I'll just treat my small test file as a small file and read it all into memory
+    treeController.addValueToTree( line.to_s.chomp)
+  end
 end
    
-# sortFile( filename )
+sortFile( "testfile.txt" )
