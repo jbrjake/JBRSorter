@@ -36,6 +36,17 @@ class TreeNode
     self.rightNode = rightNode
   end
   
+  def to_s
+    left = ""
+    right = ""
+    if leftNode
+      left = leftNode.payload.to_s
+    end
+    if rightNode
+      right = rightNode.payload.to_s
+    end
+    return "Left: " + left + " Value: " + self.payload + " Right: " + right
+  end
 end
 
 class TreeController
