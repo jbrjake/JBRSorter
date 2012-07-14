@@ -106,6 +106,7 @@ def placeNodeNearClosestNode( base, value )
       node = Node.new(value, base, nil)
       nodeArray.push(node)
       base.rightNode = node
+      self.highestValue = node # Update the highest value counter with this new max
     end
   end
   return result
