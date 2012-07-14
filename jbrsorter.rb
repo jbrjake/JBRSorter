@@ -25,8 +25,9 @@ end
 # Handles management of the nodes
 # The nodes are stored in nodeArray
 # lowestValue stores the node with the lowest payload value found in the search
+# highestValue stores the node with the highest payload value found in the search
 class NodeController
-  attr_accessor :nodeArray, :lowestValue
+  attr_accessor :nodeArray, :lowestValue, :highestValue
   
   def initialize
     self.nodeArray = Array.new
