@@ -9,10 +9,13 @@ TODO
     	- Would limit any further optimization that made it unpredictable when any given
     	  node would be modified
     - I need to really do something like a git bisect, and divide the set in half each time I test
-- I need to spend more time thinking about memory. After I've hit N nodes, I need to stop
-  adding more and instead start pruning the top down. Right now I'm putting all input values into memory,
-  which wouldn't be feasible with a large dataset
 - Port to Obj-C
     - Instruments, how I miss thee....
 - It would be nice to test with a real large data set
 - Fix the problem with the rands being floats
+
+DONE
+
+- I need to spend more time thinking about memory. After I've hit N nodes, I need to stop
+  adding more and instead start pruning the top down. Right now I'm putting all input values into memory,
+  which wouldn't be feasible with a large dataset
