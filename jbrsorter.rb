@@ -54,10 +54,10 @@ end
 # Replaces the top entry with the next highest entry
 def pruneTopValue
   if( nodeArray.count > self.numberOfValuesToOutput )
-    penultimateNode = highestValue.leftNode
+    penultimateNode = self.highestValue.leftNode
     penultimateNode.rightNode = nil
-    nodeArray[leftNode.index] = nil
-    highestValue = penultimateNode
+    self.nodeArray[highestValue.index] = nil
+    self.highestValue = penultimateNode
   end
 end
 
