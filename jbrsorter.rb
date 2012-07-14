@@ -51,8 +51,15 @@ def valueTooHigh?( value )
 end
 
 def addValueToNodes( value )
+  # Find the right location for this value
+    
+  # First, check to make sure we even want to store this
+  if( valueTooHigh?( value ) )
+    # We've already stored enough values, this one would never be reported
+    return
+  end
+    
   if nodeArray.count > 0
-    # Find the right location for this value
     # I'm arbitrarily starting from the first input number
     node = nodeArray.first
     while 1 do
