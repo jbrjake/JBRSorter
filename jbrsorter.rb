@@ -54,6 +54,7 @@ def addValueToNodes( value )
     # First value
     nodeArray.push( Node.new(value, nil, nil) )
     self.lowestValue = nodeArray.first # Well, it's the lowest for now...
+    self.highestValue = nodeArray.first # Ditto for highest
   end
 end
 
