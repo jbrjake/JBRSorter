@@ -89,6 +89,9 @@ def addValueToNodes( value )
     self.lowestValue = nodeArray.first # Well, it's the lowest for now...
     self.highestValue = nodeArray.first # Ditto for highest
   end
+  
+  pruneTopValue()
+  
 end
 
 # Returns -1 if the base's lowestNode needs to be searched
