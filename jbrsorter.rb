@@ -31,6 +31,8 @@ class NodeController
   
   def initialize
     self.nodeArray = Array.new
+    self.lowestValue = nil
+    self.highestValue = nil
   end
   
 def addValueToNodes( value )
