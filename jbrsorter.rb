@@ -51,6 +51,14 @@ def valueTooHigh?( value )
   return result
 end
 
+# Replaces the top entry with the next highest entry
+def pruneTopValue
+  penultimateNode = highestValue.leftNode
+  penultimateNode.rightNode = nil
+  nodeArray[leftNode.index] = nil
+  highestValue = penultimateNode
+end
+
 def addValueToNodes( value )
   # Find the right location for this value
     
