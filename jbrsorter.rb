@@ -75,7 +75,7 @@ def addValueToNodes( value )
     end
   else
     # First value
-    nodeArray.push( Node.new(value, nil, nil) )
+    nodeArray.push( Node.new(value, nil, nil, 0) )
     self.lowestValue = nodeArray.first # Well, it's the lowest for now...
     self.highestValue = nodeArray.first # Ditto for highest
   end
@@ -94,7 +94,7 @@ def placeNodeNearClosestNode( base, value )
         # Add a new node with leftNode as its left and base as its right
         # Set the old leftNode's rightNode to be the new node
         # Set the base's left node to be the new node
-        node = Node.new(value, base.leftNode, base) 
+        node = Node.new(value, base.leftNode, base, nodeArray.count) 
         nodeArray.push(node)
         base.leftNode.rightNode = node
         base.leftNode = node
@@ -104,7 +104,7 @@ def placeNodeNearClosestNode( base, value )
     else
       # The base is the current minimum
       # Add a new far left node with the base to its right
-      node = Node.new(value, nil, base) 
+      node = Node.new(value, nil, base, nodeArray.count) 
       nodeArray.push(node)
       base.leftNode = node
       self.lowestValue = node # Update the lowest value counter with this new low
@@ -117,7 +117,7 @@ def placeNodeNearClosestNode( base, value )
         # Add a new node with current as its left and rightNode as its right
         # Set the old rightNode's leftNode to be the new node
         # Set the base's right node to be the new node
-        node = Node.new(value, base, base.rightNode)
+        node = Node.new(value, base, base.rightNode, nodeArray.count)
         nodeArray.push(node)
         base.rightNode.leftNode = node
         base.rightNode = node
@@ -127,7 +127,7 @@ def placeNodeNearClosestNode( base, value )
     else
       # The base is the current maximum
       # Add a new far right node with the base to its left
-      node = Node.new(value, base, nil)
+      node = Node.new(value, base, nil, nodeArray.count)
       nodeArray.push(node)
       base.rightNode = node
       self.highestValue = node # Update the highest value counter with this new max
