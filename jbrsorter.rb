@@ -26,13 +26,15 @@ end
 # The nodes are stored in nodeArray
 # lowestValue stores the node with the lowest payload value found in the search
 # highestValue stores the node with the highest payload value found in the search
+# numberOfValuesToOutput is the max number of sorted, ascending values to store
 class NodeController
-  attr_accessor :nodeArray, :lowestValue, :highestValue
+  attr_accessor :nodeArray, :lowestValue, :highestValue, :numberOfValuesToOutput
   
-  def initialize
+  def initialize( numberOfValuesToOutput )
     self.nodeArray = Array.new
     self.lowestValue = nil
     self.highestValue = nil
+    self.numberOfValuesToOutput = numberOfValuesToOutput
   end
   
 def addValueToNodes( value )
@@ -129,7 +131,7 @@ end
 
 # Write the lowest N numbers to a file
 def sortFile( filename, numberOfValuesToOutput )
-  nodeController = NodeController.new
+  nodeController = NodeController.new( numberOfValuesToOutput )
   # Load each line into memory and add it to the right place in the nodes 
   file = File.open( filename, "r" )
   file.each_line do | line |
