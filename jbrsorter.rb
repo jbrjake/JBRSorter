@@ -1,12 +1,13 @@
 #! /usr/bin/ruby
 
 class Node
-  attr_accessor :payload, :leftNode, :rightNode
+  attr_accessor :payload, :leftNode, :rightNode, :index
 
-  def initialize( value, left, right )
+  def initialize( value, left, right, index )
     self.payload = value
     self.leftNode = left
     self.rightNode = right
+	self.index = index
   end
   
   def to_s # For debugging
