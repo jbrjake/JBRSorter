@@ -37,6 +37,19 @@ class NodeController
     self.numberOfValuesToOutput = numberOfValuesToOutput
   end
   
+def valueTooHigh?( value )
+  result = false
+ 	# Check if we even need to add this value
+  	if( nodeArray.count >= self.numberOfValuesToOutput )
+  	  # We already have the max number of entries we want to report
+  	  if( value >= self.highestValue.payload )
+  		# This value is too large, discard it
+  		result = true
+  	  end
+    end
+  return result
+end
+
 def addValueToNodes( value )
   if nodeArray.count > 0
     # Find the right location for this value
